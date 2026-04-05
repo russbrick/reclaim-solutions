@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Reclaim Solutions recovers cash from written-off assets for companies in transition. No upfront cost. 12% success fee only. Free assessment in 48 hours.">
+<title>Reclaim Solutions — Stranded Asset Recovery · South Jersey</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:      #FAFAF7;
+    --s1:      #F5F0E8;
+    --s2:      #EDE6D8;
+    --bd:      #DDD6C8;
+    --bd-lt:   #EDE8DE;
+    --gold:    #C8963C;
+    --gold-dk: #9A6E28;
+    --gold-lt: #E8C06A;
+    --tx:      #1A1208;
+    --tm:      #4A4030;
+    --td:      #8A7A68;
+    --tl:      #B4A898;
+    --grn:     #2D7A54;
+    --sans:    'IBM Plex Sans', system-ui, sans-serif;
+    --serif:   'Playfair Display', Georgia, serif;
+    --mono:    'IBM Plex Mono', monospace;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--tx); font-family: var(--sans); overflow-x: hidden; }
+
+/* ── LOGO ── */
+.logo { display: flex; align-items: baseline; user-select: none; }
+.logo-r { font-family: var(–serif); font-style: italic; font-weight: 900; color: var(–gold); letter-spacing: -2px; line-height: 1; }
+.logo-e { font-family: var(–serif); font-weight: 700; color: var(–tx); letter-spacing: -1px; line-height: 1; }
+.logo-pipe { width: 1.5px; background: var(–gold); opacity: 0.4; flex-shrink: 0; align-self: stretch; margin: 0 10px; }
+.logo-stack { display: flex; flex-direction: column; justify-content: center; }
+.logo-sol { font-family: var(–sans); font-weight: 300; letter-spacing: 4px; color: var(–gold-dk); text-transform: uppercase; line-height: 1; }
+.logo-tag { font-family: var(–mono); color: var(–tl); letter-spacing: 2px; margin-top: 3px; }
+.logo-nav .logo-r, .logo-nav .logo-e { font-size: 22px; }
+.logo-nav .logo-pipe { height: 18px; }
+.logo-nav .logo-sol { font-size: 7.5px; letter-spacing: 3px; }
+.logo-nav .logo-tag { font-size: 6.5px; }
+
+/* ── NAV ── */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+height: 68px; padding: 0 56px;
+display: flex; align-items: center; justify-content: space-between;
+background: rgba(250,250,247,0.96); backdrop-filter: blur(12px);
+border-bottom: 1px solid var(–bd-lt);
+}
+.nav-links { display: flex; gap: 36px; }
+.nav-links a { font-size: 12px; color: var(–td); text-decoration: none; letter-spacing: 0.5px; transition: color 0.15s; }
+.nav-links a:hover { color: var(–gold-dk); }
+.nav-cta {
+background: var(–tx); color: var(–bg); border: none;
+font-family: var(–mono); font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
+padding: 10px 22px; border-radius: 2px; cursor: pointer; text-decoration: none;
+transition: all 0.15s; display: inline-block;
+}
+.nav-cta:hover { background: var(–gold-dk); }
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh; display: flex; align-items: center;
+padding: 130px 56px 80px; position: relative; overflow: hidden; background: var(–bg);
+}
+.hero::before {
+content: ‘’; position: absolute; top: 0; right: 0; width: 55%; height: 100%;
+background: radial-gradient(ellipse 80% 60% at 80% 30%, rgba(200,150,60,0.07) 0%, transparent 70%);
+pointer-events: none;
+}
+.hero::after {
+content: ‘’; position: absolute; left: 56px; top: 130px; bottom: 80px; width: 1px;
+background: linear-gradient(180deg, var(–gold) 0%, transparent 100%); opacity: 0.2;
+}
+.hero-inner { max-width: 1200px; width: 100%; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 80px; align-items: center; position: relative; z-index: 1; }
+.hero-kicker {
+font-family: var(–mono); font-size: 10px; color: var(–gold-dk); letter-spacing: 3px; font-weight: 600;
+margin-bottom: 24px; display: flex; align-items: center; gap: 12px; animation: fadeUp 0.7s 0.1s both;
+}
+.hero-kicker::before { content: ‘’; width: 24px; height: 1px; background: var(–gold); }
+.hero-logo-wrap { margin-bottom: 36px; animation: fadeUp 0.7s 0.2s both; }
+.hero-logo-wrap .logo-r { font-size: 80px; letter-spacing: -4px; }
+.hero-logo-wrap .logo-e { font-size: 80px; letter-spacing: -2px; }
+.hero-logo-wrap .logo-pipe { height: 64px; margin: 0 20px; }
+.hero-logo-wrap .logo-sol { font-size: 14px; letter-spacing: 6px; }
+.hero-logo-wrap .logo-tag { font-size: 10px; letter-spacing: 2px; margin-top: 6px; }
+.hero-tagline {
+font-size: clamp(16px,2vw,20px); color: var(–tm); line-height: 1.8;
+max-width: 480px; margin-bottom: 44px; font-weight: 300; animation: fadeUp 0.7s 0.35s both;
+}
+.hero-tagline strong { color: var(–tx); font-weight: 500; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp 0.7s 0.5s both; }
+.btn-primary {
+background: var(–tx); color: var(–bg); border: none;
+font-family: var(–mono); font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+padding: 14px 28px; border-radius: 2px; cursor: pointer; text-decoration: none;
+display: inline-block; transition: all 0.2s;
+}
+.btn-primary:hover { background: var(–gold-dk); transform: translateY(-1px); }
+.btn-outline {
+background: none; border: 1.5px solid var(–bd); color: var(–td);
+font-family: var(–mono); font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+padding: 14px 28px; border-radius: 2px; cursor: pointer; text-decoration: none;
+display: inline-block; transition: all 0.2s;
+}
+.btn-outline:hover { border-color: var(–gold-dk); color: var(–gold-dk); }
+.hero-stats { display: flex; flex-direction: column; gap: 0; animation: fadeUp 0.7s 0.6s both; }
+.stat-card { padding: 20px 28px; border: 1px solid var(–bd); border-bottom: none; min-width: 160px; }
+.stat-card:first-child { border-radius: 3px 3px 0 0; }
+.stat-card:last-child { border-bottom: 1px solid var(–bd); border-radius: 0 0 3px 3px; }
+.stat-card:nth-child(2) { background: var(–s1); }
+.stat-val { font-family: var(–serif); font-style: italic; font-weight: 900; font-size: 36px; color: var(–gold-dk); line-height: 1; }
+.stat-lbl { font-family: var(–mono); font-size: 9px; color: var(–tl); letter-spacing: 2px; margin-top: 5px; }
+
+/* ── SECTIONS ── */
+.section { padding: 96px 56px; max-width: 1200px; margin: 0 auto; }
+.sec-kicker { font-family: var(–mono); font-size: 10px; color: var(–gold-dk); letter-spacing: 3px; font-weight: 600; margin-bottom: 16px; }
+.sec-title { font-family: var(–serif); font-size: clamp(30px,4vw,54px); font-weight: 700; color: var(–tx); margin-bottom: 16px; line-height: 1.1; letter-spacing: -0.5px; }
+.sec-title em { font-style: italic; color: var(–gold-dk); }
+.sec-sub { font-size: 16px; color: var(–tm); line-height: 1.8; max-width: 520px; font-weight: 300; }
+.ruled { max-width: 1200px; margin: 0 auto; padding: 0 56px; }
+.ruled hr { border: none; border-top: 1px solid var(–bd-lt); }
+
+/* ── HOW IT WORKS ── */
+.steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 48px; margin-top: 64px; }
+.step-num { font-family: var(–serif); font-style: italic; font-weight: 900; font-size: 64px; color: var(–gold); opacity: 0.15; line-height: 1; margin-bottom: 20px; }
+.step-title { font-size: 19px; font-weight: 600; color: var(–tx); margin-bottom: 12px; letter-spacing: -0.2px; }
+.step-text { font-size: 14px; color: var(–tm); line-height: 1.85; font-weight: 300; }
+.step-detail { font-family: var(–mono); font-size: 9px; color: var(–tl); margin-top: 18px; letter-spacing: 2px; }
+.step-rule { width: 32px; height: 2px; background: var(–gold); margin-bottom: 20px; }
+
+/* ── ASSETS ── */
+.asset-wrap { background: var(–s1); border-top: 1px solid var(–bd-lt); border-bottom: 1px solid var(–bd-lt); padding: 96px 56px; }
+.asset-inner { max-width: 1200px; margin: 0 auto; }
+.asset-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(–bd); margin-top: 56px; border: 1px solid var(–bd); }
+.asset-card { background: var(–s1); padding: 32px 28px; transition: background 0.2s; }
+.asset-card:hover { background: var(–s2); }
+.asset-icon { font-size: 24px; margin-bottom: 14px; }
+.asset-title { font-size: 16px; font-weight: 600; color: var(–tx); margin-bottom: 8px; }
+.asset-text { font-size: 13px; color: var(–tm); line-height: 1.75; font-weight: 300; }
+.asset-range { font-family: var(–mono); font-size: 10px; color: var(–gold-dk); margin-top: 14px; letter-spacing: 1px; }
+
+/* ── WHO WE SERVE ── */
+.serve-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(–bd-lt); margin-top: 56px; border: 1px solid var(–bd-lt); }
+.serve-card { background: var(–bg); padding: 28px 32px; transition: background 0.15s; }
+.serve-card:hover { background: var(–s1); }
+.serve-title { font-size: 16px; font-weight: 600; color: var(–tx); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.serve-title::before { content: ‘’; width: 4px; height: 4px; background: var(–gold); border-radius: 50%; flex-shrink: 0; }
+.serve-text { font-size: 13px; color: var(–tm); line-height: 1.75; font-weight: 300; }
+
+/* ── OFFER ── */
+.offer-wrap {
+border: 1.5px solid var(–bd); border-radius: 3px;
+display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 64px;
+padding: 56px; margin-top: 56px; background: var(–bg); position: relative; overflow: hidden;
+}
+.offer-wrap::before { content: ‘’; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(–gold) 0%, transparent 60%); }
+.offer-title { font-family: var(–serif); font-size: clamp(22px,3vw,36px); font-weight: 700; color: var(–tx); margin-bottom: 16px; line-height: 1.2; letter-spacing: -0.3px; }
+.offer-title em { font-style: italic; color: var(–gold-dk); }
+.offer-text { font-size: 15px; color: var(–tm); line-height: 1.8; font-weight: 300; margin-bottom: 24px; }
+.offer-items { display: flex; flex-direction: column; gap: 10px; }
+.offer-item { display: flex; gap: 10px; align-items: baseline; font-size: 13px; color: var(–tm); }
+.offer-item::before { content: ‘✓’; color: var(–grn); font-size: 11px; flex-shrink: 0; font-weight: 700; }
+.fee-block { text-align: center; min-width: 160px; }
+.fee-num { font-family: var(–serif); font-style: italic; font-weight: 900; font-size: 72px; color: var(–gold-dk); line-height: 1; }
+.fee-label { font-family: var(–mono); font-size: 10px; color: var(–tl); letter-spacing: 2px; margin-top: 4px; }
+.fee-sub { font-size: 12px; color: var(–tl); margin-top: 8px; line-height: 1.6; }
+.fee-divider { border: none; border-top: 1px solid var(–bd); margin: 20px 0; }
+
+/* ── CONTACT ── */
+.contact-wrap { background: var(–tx); color: var(–bg); padding: 96px 56px; }
+.contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+.contact-logo { display: flex; align-items: baseline; margin-bottom: 24px; }
+.contact-logo .logo-r { font-family: var(–serif); font-style: italic; font-weight: 900; font-size: 32px; color: var(–gold); letter-spacing: -1.5px; }
+.contact-logo .logo-e { font-family: var(–serif); font-weight: 700; font-size: 32px; color: rgba(250,250,247,0.85); letter-spacing: -0.8px; }
+.contact-logo-pipe { width: 1.5px; height: 26px; background: var(–gold); opacity: 0.4; margin: 0 12px; }
+.contact-logo-stack { display: flex; flex-direction: column; justify-content: center; }
+.contact-logo-sol { font-family: var(–sans); font-size: 9px; font-weight: 300; letter-spacing: 4px; color: var(–gold); text-transform: uppercase; }
+.contact-logo-tag { font-family: var(–mono); font-size: 8px; letter-spacing: 2px; color: rgba(255,255,255,0.25); margin-top: 3px; }
+.contact-title { font-family: var(–serif); font-size: clamp(26px,3.5vw,44px); font-weight: 700; font-style: italic; color: var(–bg); margin-bottom: 16px; line-height: 1.2; }
+.contact-title em { color: var(–gold); }
+.contact-text { font-size: 15px; color: rgba(250,250,247,0.6); line-height: 1.8; font-weight: 300; margin-bottom: 32px; }
+.contact-rows { display: flex; flex-direction: column; gap: 12px; }
+.contact-row { display: flex; gap: 16px; align-items: baseline; }
+.contact-lbl { font-family: var(–mono); font-size: 9px; color: rgba(250,250,247,0.3); letter-spacing: 2px; min-width: 56px; }
+.contact-val { font-size: 14px; color: rgba(250,250,247,0.75); }
+.contact-entity { font-family: var(–mono); font-size: 9px; color: rgba(250,250,247,0.2); letter-spacing: 1px; margin-top: 20px; line-height: 1.8; }
+
+/* ── FORM ── */
+.form-wrap { display: flex; flex-direction: column; gap: 12px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-lbl { font-family: var(–mono); font-size: 9px; color: rgba(250,250,247,0.3); letter-spacing: 2px; }
+.form-input, .form-area {
+background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+color: #FAFAF7; padding: 12px 14px; font-size: 13px; font-family: var(–sans);
+border-radius: 2px; outline: none; width: 100%; transition: border-color 0.15s;
+}
+.form-input:focus, .form-area:focus { border-color: var(–gold); }
+.form-input::placeholder, .form-area::placeholder { color: rgba(250,250,247,0.25); }
+.form-area { resize: none; height: 100px; }
+.btn-form {
+background: var(–gold); color: var(–tx); border: none;
+font-family: var(–mono); font-size: 11px; font-weight: 600; letter-spacing: 2px;
+padding: 14px 24px; border-radius: 2px; cursor: pointer; align-self: flex-start; transition: all 0.2s;
+}
+.btn-form:hover { background: var(–gold-lt); }
+
+/* Success message (shown after Netlify form submit) */
+.form-success {
+display: none; background: rgba(45,122,84,0.15); border: 1px solid rgba(45,122,84,0.4);
+border-radius: 3px; padding: 20px; text-align: center;
+}
+.form-success h3 { font-family: var(–serif); font-size: 20px; color: var(–bg); margin-bottom: 8px; }
+.form-success p { font-size: 13px; color: rgba(250,250,247,0.6); }
+
+/* ── FOOTER ── */
+footer {
+background: var(–tx); border-top: 1px solid rgba(255,255,255,0.08);
+padding: 20px 56px; display: flex; justify-content: space-between; align-items: center;
+}
+.foot-logo { display: flex; align-items: baseline; }
+.foot-r { font-family: var(–serif); font-style: italic; font-weight: 900; font-size: 16px; color: var(–gold); letter-spacing: -0.5px; }
+.foot-e { font-family: var(–serif); font-weight: 700; font-size: 16px; color: rgba(250,250,247,0.3); letter-spacing: -0.3px; }
+.foot-txt { font-family: var(–mono); font-size: 9px; color: rgba(250,250,247,0.2); letter-spacing: 1px; }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+
+@media(max-width:768px) {
+nav { padding: 0 24px; }
+.nav-links { display: none; }
+.hero { padding: 110px 24px 64px; }
+.hero-inner { grid-template-columns: 1fr; }
+.hero-stats { flex-direction: row; flex-wrap: wrap; }
+.stat-card { flex: 1; min-width: 120px; border-bottom: 1px solid var(–bd) !important; border-radius: 3px !important; }
+.hero-logo-wrap .logo-r, .hero-logo-wrap .logo-e { font-size: 48px; }
+.hero-logo-wrap .logo-pipe { height: 38px; }
+.section { padding: 64px 24px; }
+.steps { grid-template-columns: 1fr; gap: 36px; }
+.asset-wrap { padding: 64px 24px; }
+.asset-grid, .serve-grid { grid-template-columns: 1fr; }
+.offer-wrap { grid-template-columns: 1fr; padding: 36px 28px; }
+.contact-wrap { padding: 64px 24px; }
+.contact-inner { grid-template-columns: 1fr; gap: 48px; }
+.form-row { grid-template-columns: 1fr; }
+footer { flex-direction: column; gap: 10px; padding: 20px 24px; text-align: center; }
+.ruled { padding: 0 24px; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <div class="logo logo-nav">
+    <span class="logo-r">R</span><span class="logo-e">eclaim</span>
+    <div class="logo-pipe"></div>
+    <div class="logo-stack">
+      <div class="logo-sol">Solutions</div>
+      <div class="logo-tag">ASSET RECOVERY</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#how">How It Works</a>
+    <a href="#assets">What We Recover</a>
+    <a href="#serve">Who We Serve</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">FREE ASSESSMENT →</a>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-kicker">South Jersey · Philadelphia Metro · Mid-Atlantic</div>
+      <div class="hero-logo-wrap">
+        <div class="logo">
+          <span class="logo-r">R</span><span class="logo-e">eclaim</span>
+          <div class="logo-pipe"></div>
+          <div class="logo-stack">
+            <div class="logo-sol">Solutions</div>
+            <div class="logo-tag">ASSET RECOVERY</div>
+          </div>
+        </div>
+      </div>
+      <p class="hero-tagline">
+        We turn <strong>written-off assets</strong> into recovered cash.<br>
+        No upfront cost. 12% success fee only.<br>
+        Free assessment within 48 hours.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">REQUEST FREE ASSESSMENT</a>
+        <a href="#how" class="btn-outline">HOW IT WORKS</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card"><div class="stat-val">12%</div><div class="stat-lbl">SUCCESS FEE ONLY</div></div>
+      <div class="stat-card"><div class="stat-val">$0</div><div class="stat-lbl">UPFRONT COST</div></div>
+      <div class="stat-card"><div class="stat-val">48h</div><div class="stat-lbl">FREE ESTIMATE</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="ruled"><hr></div>
+
+<!-- HOW IT WORKS -->
+
+<section class="section" id="how">
+  <div class="sec-kicker">// HOW IT WORKS</div>
+  <h2 class="sec-title">Three Steps.<br><em>Zero Risk.</em></h2>
+  <p class="sec-sub">Most companies leave 30–50% of recoverable value on the table. We run parallel buyer channels simultaneously — domestic dealers, auctions, and international buyers — to maximize what you get.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-rule"></div>
+      <div class="step-num">01</div>
+      <div class="step-title">Free Assessment</div>
+      <p class="step-text">Share your written-off asset list — equipment, vehicles, inventory, anything. We return a detailed recovery estimate within 48 hours showing what's realistically recoverable and how.</p>
+      <div class="step-detail">NO COST · NO COMMITMENT · 48 HOURS</div>
+    </div>
+    <div class="step">
+      <div class="step-rule"></div>
+      <div class="step-num">02</div>
+      <div class="step-title">We Go to Market</div>
+      <p class="step-text">We sign a one-page agreement and immediately reach our network of equipment dealers, direct buyers, and international operators across 40+ countries. Parallel tracks. Competitive bidding.</p>
+      <div class="step-detail">TYPICALLY 4–10 WEEKS TO CLOSE</div>
+    </div>
+    <div class="step">
+      <div class="step-rule"></div>
+      <div class="step-num">03</div>
+      <div class="step-title">You Receive Funds</div>
+      <p class="step-text">Proceeds are wired to you. We collect 12% of gross recovered value — nothing more. If we recover nothing, you pay nothing. Your risk is zero from day one.</p>
+      <div class="step-detail">NET 30 FROM EACH CLOSED SALE</div>
+    </div>
+  </div>
+</section>
+
+<div class="ruled"><hr></div>
+
+<!-- WHAT WE RECOVER -->
+
+<div class="asset-wrap" id="assets">
+  <div class="asset-inner">
+    <div class="sec-kicker">// WHAT WE RECOVER</div>
+    <h2 class="sec-title">Every Asset Type.<br><em>Every Industry.</em></h2>
+    <p class="sec-sub">If it's been written off but still exists somewhere, it has market value. We've recovered from plant closures, fleet liquidations, hospital wind-downs, and more.</p>
+    <div class="asset-grid">
+      <div class="asset-card"><div class="asset-icon">🚛</div><div class="asset-title">Commercial Vehicle Fleets</div><p class="asset-text">Semi trucks, trailers, refrigerated vehicles, forklifts, dock equipment. Strong domestic and international demand — especially Latin America and West Africa for Class 8 trucks.</p><div class="asset-range">$40K–$120K PER UNIT</div></div>
+      <div class="asset-card"><div class="asset-icon">⚙️</div><div class="asset-title">Manufacturing Equipment</div><p class="asset-text">CNC machines, hydraulic presses, conveyor systems, extrusion equipment, molds and dies, assembly lines. High international demand from Mexico and Eastern Europe.</p><div class="asset-range">$100K–$2M+ PER ENGAGEMENT</div></div>
+      <div class="asset-card"><div class="asset-icon">🥩</div><div class="asset-title">Food Processing Equipment</div><p class="asset-text">Stainless steel processing tanks, packaging lines, refrigeration units, cold storage systems. Buyers across Latin America and Southeast Asia move quickly.</p><div class="asset-range">$75K–$500K PER ENGAGEMENT</div></div>
+      <div class="asset-card"><div class="asset-icon">💊</div><div class="asset-title">Medical & Lab Equipment</div><p class="asset-text">Diagnostic tools, specialty medical equipment, lab instruments, imaging systems. Active domestic and international remarketing networks with fast clearing times.</p><div class="asset-range">$30K–$300K PER ENGAGEMENT</div></div>
+      <div class="asset-card"><div class="asset-icon">🖥️</div><div class="asset-title">IT & Office Equipment</div><p class="asset-text">Servers, workstations, networking infrastructure, call center equipment, office furniture at scale. ITAD buyers often purchase entire lots within days.</p><div class="asset-range">$20K–$200K PER ENGAGEMENT</div></div>
+      <div class="asset-card"><div class="asset-icon">📦</div><div class="asset-title">Raw Materials & Inventory</div><p class="asset-text">Commodity inputs, finished goods, specialty materials, resins, metals. Priced at current spot rates with rapid liquidation timelines for time-sensitive situations.</p><div class="asset-range">PRICED AT CURRENT SPOT RATE</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHO WE SERVE -->
+
+<section class="section" id="serve">
+  <div class="sec-kicker">// WHO WE SERVE</div>
+  <h2 class="sec-title">Built for Companies<br><em>in Transition.</em></h2>
+  <p class="sec-sub">We specialize in situations where assets have been written off and nobody's job it is to recover them. That's exactly where we create the most value.</p>
+  <div class="serve-grid">
+    <div class="serve-card"><div class="serve-title">Private Equity Portfolio Companies</div><p class="serve-text">Post-acquisition consolidations leave stranded assets across shuttered facilities. PE firms benefit from recovery on assets already written to zero — pure upside with zero internal overhead.</p></div>
+    <div class="serve-card"><div class="serve-title">Plant Closures & Downsizing</div><p class="serve-text">When a facility closes, equipment and inventory are rarely a priority. We step in immediately — before assets deteriorate or facility leases expire — and maximize what's recovered.</p></div>
+    <div class="serve-card"><div class="serve-title">Bankruptcy Estates & Trustees</div><p class="serve-text">Trustees are legally required to maximize estate recovery. We provide fast, professional asset monetization with no upfront cost and complete documentation for court records.</p></div>
+    <div class="serve-card"><div class="serve-title">Corporate Divestitures</div><p class="serve-text">When a division or subsidiary is sold or wound down, physical assets are often an afterthought. We ensure they're not — turning them into meaningful recovery for the parent organization.</p></div>
+  </div>
+</section>
+
+<div class="ruled"><hr></div>
+
+<!-- OFFER -->
+
+<section class="section" style="padding-top:0;">
+  <div class="offer-wrap">
+    <div>
+      <h2 class="offer-title">Zero Risk.<br><em>Results Only.</em></h2>
+      <p class="offer-text">Our model is built around one principle: if we don't recover value for you, you don't pay us anything. Our 12% success fee means our incentives are completely aligned with yours from the first conversation.</p>
+      <div class="offer-items">
+        <div class="offer-item">Free preliminary recovery assessment — 48-hour turnaround</div>
+        <div class="offer-item">No retainer, no hourly fees, no minimums of any kind</div>
+        <div class="offer-item">12% success fee on gross recovered proceeds only</div>
+        <div class="offer-item">90-day exclusive engagement — no long-term lock-in</div>
+        <div class="offer-item">Buyer network spanning domestic markets and 40+ countries</div>
+        <div class="offer-item">You approve every transaction before it closes</div>
+      </div>
+    </div>
+    <div class="fee-block">
+      <div class="fee-num">12%</div>
+      <div class="fee-label">SUCCESS FEE</div>
+      <hr class="fee-divider">
+      <div class="fee-sub">Only if we recover.<br>Nothing if we don't.</div>
+      <a href="#contact" class="btn-primary" style="margin-top:20px;display:block;text-align:center;">GET STARTED →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<div class="contact-wrap" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="contact-logo">
+        <span class="logo-r">R</span><span class="logo-e" style="color:rgba(250,250,247,0.85);">eclaim</span>
+        <div class="contact-logo-pipe"></div>
+        <div class="contact-logo-stack">
+          <div class="contact-logo-sol">Solutions</div>
+          <div class="contact-logo-tag">ASSET RECOVERY</div>
+        </div>
+      </div>
+      <h2 class="contact-title">Request a<br><em>Free Assessment.</em></h2>
+      <p class="contact-text">Tell us about your assets. We'll return a preliminary recovery estimate within 48 hours at no cost and no obligation.</p>
+      <div class="contact-rows">
+        <div class="contact-row">
+          <div class="contact-lbl">EMAIL</div>
+          <div class="contact-val">info@reclaimsolutions.com</div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-lbl">REGION</div>
+          <div class="contact-val">South Jersey · Philadelphia Metro · Mid-Atlantic</div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-lbl">RESPONSE</div>
+          <div class="contact-val">Within 24 hours</div>
+        </div>
+      </div>
+      <div class="contact-entity">
+        Brick Advisory Group LLC d/b/a Reclaim Solutions<br>
+        New Jersey LLC · Licensed &amp; Insured · EIN on File
+      </div>
+    </div>
+
+```
+<!-- ═══ NETLIFY FORM — do not remove data-netlify attributes ═══ -->
+<form
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  id="contact-form"
+  class="form-wrap"
+>
+  <!-- Netlify hidden fields — required -->
+  <input type="hidden" name="form-name" value="contact">
+  <!-- Honeypot spam trap — hidden from humans -->
+  <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-lbl" for="name">YOUR NAME</label>
+      <input class="form-input" id="name" name="name" type="text" placeholder="John Smith" required>
+    </div>
+    <div class="form-group">
+      <label class="form-lbl" for="title">TITLE</label>
+      <input class="form-input" id="title" name="title" type="text" placeholder="CFO, VP Operations...">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-lbl" for="company">COMPANY</label>
+    <input class="form-input" id="company" name="company" type="text" placeholder="Company name" required>
+  </div>
+  <div class="form-group">
+    <label class="form-lbl" for="email">EMAIL</label>
+    <input class="form-input" id="email" name="email" type="email" placeholder="you@company.com" required>
+  </div>
+  <div class="form-group">
+    <label class="form-lbl" for="assets">DESCRIBE YOUR ASSETS</label>
+    <textarea class="form-area" id="assets" name="assets" placeholder="Equipment, vehicles, inventory — rough types and quantities if known..."></textarea>
+  </div>
+  <button type="submit" class="btn-form">REQUEST FREE ASSESSMENT →</button>
+
+  <!-- Success message shown after submit -->
+  <div class="form-success" id="form-success">
+    <h3>Assessment Requested ✓</h3>
+    <p>We'll be in touch within 24 hours with next steps.</p>
+  </div>
+</form>
+```
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="foot-logo">
+    <span class="foot-r">R</span><span class="foot-e">eclaim Solutions</span>
+  </div>
+  <div class="foot-txt">© 2026 BRICK ADVISORY GROUP LLC D/B/A RECLAIM SOLUTIONS · ALL RIGHTS RESERVED</div>
+  <div class="foot-txt">NJ LLC · INSURED</div>
+</footer>
+
+<script>
+  /* Smooth scroll */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) window.scrollTo({ top: t.offsetTop - 80, behavior: 'smooth' });
+    });
+  });
+
+  /* Show success message on form submit (Netlify handles the POST) */
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      /* Let Netlify process the POST — show success state after short delay */
+      setTimeout(() => {
+        document.getElementById('form-success').style.display = 'block';
+        form.querySelector('.btn-form').style.display = 'none';
+      }, 800);
+    });
+  }
+</script>
+
+</body></html>
